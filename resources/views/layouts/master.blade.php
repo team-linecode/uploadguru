@@ -29,7 +29,7 @@
                 <ul class="navbar-nav navbar-right">
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                             <img alt="image" src="/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
-                            <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
+                            <div class="d-sm-none d-lg-inline-block">Hallo, {{ auth()->user()->name }}</div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="dropdown-title">Logged in 5 min ago</div>
@@ -63,9 +63,11 @@
                         <li class="nav-item {{ request()->segment(1) == '' ? 'active' : '' }}">
                             <a href="/" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                         </li>
+                        @if (auth()->user()->level == 'Admin')
                         <li class="nav-item {{ request()->segment(1) == 'user' ? 'active' : '' }}">
                             <a href="/user" class="nav-link"><i class="fas fa-user"></i><span>User</span></a>
                         </li>
+                        @endif
                     </ul>
                 </aside>
             </div>
@@ -83,10 +85,7 @@
 
             <footer class="main-footer">
                 <div class="footer-left">
-                    Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
-                </div>
-                <div class="footer-right">
-                    2.3.0
+                    Copyright &copy; 2020 <div class="bullet"></div> Made By <a href="/">LineCode</a>
                 </div>
             </footer>
         </div>

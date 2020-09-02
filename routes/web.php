@@ -13,11 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/auth', 'AuthController@index')->name('login');
+Route::post('/login', 'AuthController@login');
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/', 'DashboardController@index');
+    
     Route::get('/user', 'UserController@index');
     Route::post('/adduser', 'UserController@add');
     Route::get('/edituser/{id}', 'UserController@edit');
     Route::post('/updateuser', 'UserController@update');
     Route::get('/deleteuser/{id}', 'UserController@delete');
+    
+    Route::post('/addfile', 'DashboardController@add');
+    Route::get('/deletefile/{id}', 'DashboardController@delete');
+
+
+    Route::get('/logout', 'AuthController@logout');
 });

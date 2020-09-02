@@ -31,10 +31,11 @@
                             </div>
 
                             <div class="card-body">
-                                <form method="POST" action="#" class="needs-validation" novalidate="">
+                                <form method="POST" action="{{ url('/login') }}" class="needs-validation" novalidate="">
+                                    @csrf
                                     <div class="form-group">
                                         <label for="username">Username</label>
-                                        <input id="username" type="email" class="form-control" name="username" tabindex="1" required autofocus="">
+                                        <input id="username" type="text" class="form-control" name="username" tabindex="1" required="" autofocus="">
                                         <div class="invalid-feedback">
                                             Username Tidak Boleh Kosong
                                         </div>
@@ -59,7 +60,7 @@
                             </div>
                         </div>
                         <div class="simple-footer">
-                            Copyright © Stisla 2018
+                            Copyright © LineCode 2020
                         </div>
                     </div>
                 </div>
