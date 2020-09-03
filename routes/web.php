@@ -16,6 +16,8 @@ Route::get('/auth', 'AuthController@index')->name('login');
 Route::post('/login', 'AuthController@login');
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/', 'DashboardController@index');
+    Route::post('/addfiles', 'DashboardController@add');
+    Route::get('/deletefiles/{id}', 'DashboardController@delete');
     
     Route::get('/user', 'UserController@index');
     Route::post('/adduser', 'UserController@add');
@@ -23,8 +25,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/updateuser', 'UserController@update');
     Route::get('/deleteuser/{id}', 'UserController@delete');
     
-    Route::post('/addfile', 'DashboardController@add');
-    Route::get('/deletefile/{id}', 'DashboardController@delete');
+    Route::get('/upload', 'UploadController@index');
+    Route::post('/addfile', 'UploadController@add');
+    Route::get('/deletefile/{id}', 'UploadController@delete');
 
 
     Route::get('/logout', 'AuthController@logout');

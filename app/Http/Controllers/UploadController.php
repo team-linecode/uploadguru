@@ -5,19 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use App\Files;
-use App\User;
 
-class DashboardController extends Controller
+class UploadController extends Controller
 {
     public function index()
     {
         $files = Files::all();
 
-        $file_user = Files::all();
-        $file_count = Files::count();
-        $user_count = User::count();
+        $file_user = Files::where('user_id', auth()->user()->id)->get();
 
-        return view('dashboard.index', compact('files', 'file_user', 'file_count', 'user_count'));
+        return view('upload.index', compact('files', 'file_user'));
     }
 
     public function add(Request $request)
@@ -32,7 +29,7 @@ class DashboardController extends Controller
                 'judul' => $request->judul
             ]);
 
-            return redirect('/')->with('success', 'File berhasil diupload.');
+            return redirect('/upload')->with('success', 'File berhasil diupload.');
         }
     }
 
@@ -46,7 +43,7 @@ class DashboardController extends Controller
         $files = Files::where('id', $id)->delete();
 
         if ($files) {
-            return redirect('/')->with('success', 'File berhasil dihapus.');
+            return redirect('/upload')->with('success', 'File berhasil dihapus.');
         }
     }
 }

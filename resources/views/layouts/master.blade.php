@@ -63,6 +63,9 @@
                         <li class="nav-item {{ request()->segment(1) == '' ? 'active' : '' }}">
                             <a href="/" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
                         </li>
+                        <li class="nav-item {{ request()->segment(1) == 'upload' ? 'active' : '' }}">
+                            <a href="/upload" class="nav-link"><i class="fas fa-upload"></i><span>Upload</span></a>
+                        </li>
                         @if (auth()->user()->level == 'Admin')
                         <li class="nav-item {{ request()->segment(1) == 'user' ? 'active' : '' }}">
                             <a href="/user" class="nav-link"><i class="fas fa-user"></i><span>User</span></a>
@@ -77,6 +80,7 @@
                     <div class="section-header">
                         <h4 class="p-0 m-0">{{ request()->segment(1) == 'user' ? 'User Data' : '' }}</h4>
                         <h4 class="p-0 m-0">{{ request()->segment(1) == 'edituser' ? 'Edit User Data' : '' }}</h4>
+                        <h4 class="p-0 m-0">{{ request()->segment(1) == 'upload' ? 'Upload File' : '' }}</h4>
                         <h4 class="p-0 m-0">{{ request()->segment(1) == '' ? 'Dashboard' : '' }}</h4>
                     </div>
                 </section>
